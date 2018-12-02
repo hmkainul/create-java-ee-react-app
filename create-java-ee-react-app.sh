@@ -5,16 +5,21 @@
 # Heikki Kainulainen, 2018-12-02
 # https://github.com/hmkainul/create-java-ee-react-app.git
 
+get() {
+    BIN=$1
+    URL=$2
+    FILE=${URL##*/}
+    curl -OL $URL
+    tar -xf $FILE
+    export PATH=$PWD/$BIN:$PATH
+}
+
 get_jdk() {
-    curl -OL https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u192-b12/OpenJDK8U-jdk_x64_mac_hotspot_8u192b12.tar.gz
-    tar -xf OpenJDK8U-jdk_x64_mac_hotspot_8u192b12.tar.gz
-    export PATH=$PWD/jdk8u192-b12/Contents/Home/bin:$PATH
+    get jdk8u192-b12/Contents/Home/bin https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u192-b12/OpenJDK8U-jdk_x64_mac_hotspot_8u192b12.tar.gz
 }
 
 get_maven() {
-    curl -OL http://www.nic.funet.fi/pub/mirrors/apache.org/maven/maven-3/3.6.0/binaries/apache-maven-3.6.0-bin.tar.gz
-    tar -xf apache-maven-3.6.0-bin.tar.gz
-    export PATH=$PWD/apache-maven-3.6.0/bin:$PATH
+    get apache-maven-3.6.0/bin http://www.nic.funet.fi/pub/mirrors/apache.org/maven/maven-3/3.6.0/binaries/apache-maven-3.6.0-bin.tar.gz
 }
 
 adam_bien_jee_archetype() {
@@ -28,9 +33,7 @@ build_backend() {
 }
 
 get_payara() {
-    curl -OL https://s3-eu-west-1.amazonaws.com/payara.fish/Payara+Downloads/5.183/payara-5.183.tar.gz
-    tar -xf payara-5.183.tar.gz
-    export PATH=$PWD/payara5/bin:$PATH
+    get payara5/bin https://s3-eu-west-1.amazonaws.com/payara.fish/Payara+Downloads/5.183/payara-5.183.tar.gz
 }
 
 install_war() {
@@ -52,9 +55,7 @@ backend() {
 }
 
 get_node() {
-    curl -OL https://nodejs.org/dist/v11.3.0/node-v11.3.0-darwin-x64.tar.gz
-    tar -xf node-v11.3.0-darwin-x64.tar.gz
-    export PATH=$PWD/node-v11.3.0-darwin-x64/bin:$PATH
+    get node-v11.3.0-darwin-x64/bin https://nodejs.org/dist/v11.3.0/node-v11.3.0-darwin-x64.tar.gz
 }
 
 create_react_app() {
