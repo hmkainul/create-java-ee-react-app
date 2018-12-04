@@ -41,10 +41,6 @@ install_war() {
     asadmin deploy --force=true backend/target/backend.war
 }
 
-open_chrome() {
-    open -na "Google Chrome"  --args --new-window --incognito "http://localhost:3000/" "http://localhost:8080/backend/resources/ping"
-}
-
 backend() {
     get_jdk
     get_maven
@@ -70,6 +66,10 @@ frontend() {
     create_react_app
 }
 
+open_chrome() {
+    open -na "Google Chrome"  --args --new-window --incognito "http://localhost:3000/" "http://localhost:8080/backend/resources/ping"
+}
+
 backend
-frontend
 open_chrome
+frontend
