@@ -57,6 +57,42 @@ get_node() {
 create_react_app() {
     npx create-react-app frontend
     cd frontend
+}
+
+modify_package_json() {
+    sed 's#  "name": "frontend",#  "name": "frontend",\
+  "proxy": "http://localhost:8080/",#' package.json > temp.json
+    mv temp.json package.json
+}
+
+add_constructor() {
+    sed 's#render() {#constructor(props) {\
+    super(props)\
+    this.state = { '"'"'greeting'"'"': '"'"''"'"' }\
+  }\
+  componentWillMount() {\
+    fetch('"'"'/backend/resources/ping'"'"')\
+      .then(response => response.text())\
+      .then(text => this.setState({ '"'"'greeting'"'"': text }))\
+  }\
+  render() {#' App.js > temp.js
+    mv temp.js App.js
+}
+
+modify_render() {
+    sed 's#</header>#  <p>{this.state.greeting}</p>\
+        </header>#' App.js > temp.js
+    mv temp.js App.js
+}
+
+modify_app_js() {
+    cd src
+    add_constructor
+    modify_render
+    cd ..
+}
+
+start_frontend() {
     export BROWSER=none
     npm start
 }
@@ -64,6 +100,9 @@ create_react_app() {
 frontend() {
     get_node
     create_react_app
+    modify_package_json
+    modify_app_js
+    start_frontend
 }
 
 open_chrome() {
