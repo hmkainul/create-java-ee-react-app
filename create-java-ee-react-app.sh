@@ -19,7 +19,7 @@ get_jdk() {
 }
 
 get_maven() {
-    get apache-maven-3.6.0/bin http://www.nic.funet.fi/pub/mirrors/apache.org/maven/maven-3/3.6.0/binaries/apache-maven-3.6.0-bin.tar.gz
+    get apache-maven-3.6.1/bin http://www.nic.funet.fi/pub/mirrors/apache.org/maven/maven-3/3.6.1/binaries/apache-maven-3.6.1-bin.tar.gz
 }
 
 adam_bien_jee_archetype() {
