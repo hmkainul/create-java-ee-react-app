@@ -2,7 +2,7 @@
 # Shell script for bootstrapping Java EE and React project.
 # JDK and Node binaries are macOS versions.
 # 
-# Heikki Kainulainen, 2018-12-02
+# Heikki Kainulainen, 2018-12-02, 2019-07-07
 # https://github.com/hmkainul/create-java-ee-react-app.git
 
 get() {
@@ -59,7 +59,7 @@ backend() {
 }
 
 get_node() {
-    get node-v11.3.0-darwin-x64/bin https://nodejs.org/dist/v11.3.0/node-v11.3.0-darwin-x64.tar.gz
+    get node-v12.6.0-darwin-x64/bin https://nodejs.org/dist/v12.6.0/node-v12.6.0-darwin-x64.tar.gz
 }
 
 create_react_app() {
