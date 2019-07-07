@@ -23,7 +23,15 @@ get_maven() {
 }
 
 adam_bien_jee_archetype() {
-    mvn archetype:generate -DarchetypeGroupId=com.airhacks -DarchetypeArtifactId=javaee8-essentials-archetype -DarchetypeVersion=0.0.2 -DgroupId=com.example -DartifactId=backend -Dversion=0.0.1 -Darchetype.interactive=false --batch-mode
+    mvn archetype:generate \
+      -DarchetypeGroupId=com.airhacks \
+      -DarchetypeArtifactId=javaee8-essentials-archetype \
+      -DarchetypeVersion=0.0.2 \
+      -DgroupId=com.example \
+      -DartifactId=backend \
+      -Dversion=0.0.1 \
+      -Darchetype.interactive=false \
+      --batch-mode
 }
 
 build_backend() {
