@@ -73,29 +73,34 @@ modify_package_json() {
     mv temp.json package.json
 }
 
-add_constructor() {
-    sed 's#render() {#constructor(props) {\
-    super(props)\
-    this.state = { '"'"'greeting'"'"': '"'"''"'"' }\
-  }\
-  componentWillMount() {\
+modify_import() {
+    sed 's#import React from#import React, { useState, useEffect } from#' App.js > temp.js
+    mv temp.js App.js
+}
+
+add_state() {
+    sed 's#return (#const [greeting, setGreeting] = useState();\
+\
+  useEffect(() => {\
     fetch('"'"'/backend/resources/ping'"'"')\
       .then(response => response.text())\
-      .then(text => this.setState({ '"'"'greeting'"'"': text }))\
-  }\
-  render() {#' App.js > temp.js
+      .then(text => setGreeting(text));\
+  }, []);\
+\
+  return (#' App.js > temp.js
     mv temp.js App.js
 }
 
 modify_render() {
-    sed 's#</header>#  <p>{this.state.greeting}</p>\
-        </header>#' App.js > temp.js
+    sed 's#</header>#  <p>{greeting}</p>\
+      </header>#' App.js > temp.js
     mv temp.js App.js
 }
 
 modify_app_js() {
     cd src
-    add_constructor
+    modify_import
+    add_state
     modify_render
     cd ..
 }
