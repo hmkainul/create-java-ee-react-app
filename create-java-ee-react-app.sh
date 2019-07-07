@@ -15,7 +15,7 @@ get() {
 }
 
 get_jdk() {
-    get jdk8u192-b12/Contents/Home/bin https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u192-b12/OpenJDK8U-jdk_x64_mac_hotspot_8u192b12.tar.gz
+    get jdk8u212-b04/Contents/Home/bin https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u212-b04/OpenJDK8U-jdk_x64_mac_hotspot_8u212b04.tar.gz
 }
 
 get_maven() {
