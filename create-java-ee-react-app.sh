@@ -41,7 +41,7 @@ build_backend() {
 }
 
 get_payara() {
-    get payara5/bin https://s3-eu-west-1.amazonaws.com/payara.fish/Payara+Downloads/5.183/payara-5.183.tar.gz
+    get payara5/bin https://s3-eu-west-1.amazonaws.com/payara.fish/Payara+Downloads/5.192/payara-5.192.tar.gz
 }
 
 install_war() {
